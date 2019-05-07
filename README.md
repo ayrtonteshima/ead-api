@@ -4,3 +4,7 @@ API RESTFul da plataforma de ensino a distância. Projeto em Node/JS seguindo bo
 
 ## Quer aprender a desenvolver esta plataforma do zero?
 [Acesse a playlist](https://www.youtube.com/watch?v=Tlu2hu6CEcI&list=PLbA-jMwv0cuVxsn9saWFWS2eOQEWKE-K7) onde mostramos desde o início todo o desenvolvimento da plataforma
+
+## Redes sociais
+* [Grupo no Facebook](https://www.facebook.com/groups/326517464701634/)
+* Telegram: @programadorabordo
