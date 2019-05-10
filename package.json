@@ -1,0 +1,33 @@
+{
+  "name": "ead-api",
+  "version": "0.0.1",
+  "description": "API da plataforma de ensino a distância",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon src/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programadorabordo/ead-api.git"
+  },
+  "keywords": [
+    "plataforma",
+    "EAD",
+    "programador",
+    "a",
+    "bordo"
+  ],
+  "author": "Programador a Bordo, Ayrton Teshima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/programadorabordo/ead-api/issues"
+  },
+  "homepage": "https://github.com/programadorabordo/ead-api#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^18.3.1"
+  }
+}
