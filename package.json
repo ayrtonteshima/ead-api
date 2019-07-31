@@ -35,8 +35,12 @@
   "dependencies": {
     "@hapi/hapi": "^18.3.1",
     "@hapi/joi": "^15.1.0",
-    "joi": "^14.3.1",
-    "mongoose": "^5.6.8",
+    "bcryptjs": "^2.4.3",
+    "boom": "^7.3.0",
+    "hapi-auth-jwt2": "^8.6.1",
+    "ioredis": "^4.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.7",
     "uuid": "^3.3.2"
   }
 }

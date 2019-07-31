@@ -1,5 +1,5 @@
 const userHandler = require('../handlers/users.handler');
-const userSchema = require('../schemas/users.schema');
+const userSchema = require('../schemas/users.schema.js');
 
 module.exports = [
   {
@@ -8,8 +8,14 @@ module.exports = [
     handler: userHandler.create,
     options: {
       validate: {
-        payload: userSchema
-      }
-    }
-  }
+        payload: userSchema,
+      },
+      auth: false,
+    },
+  },
+  {
+    method: 'GET',
+    path: '/users',
+    handler: userHandler.getAll,
+  },
 ];

@@ -2,6 +2,7 @@ version: "3"
 services:
   mongo:
     image: mongo
+    container_name: "eadapi-mongo"
     restart: "always"
     volumes:
       - ./.dbcache/mongo/data:/data/db
@@ -14,12 +15,21 @@ services:
       - backend
   api:
     image: node:10.16-slim
+    container_name: "eadapi-api"
     ports:
       - "3000:3000"
     working_dir: "/home/node/app"
     volumes:
       - ./:/home/node/app
     command: "npm start"
+    networks:
+      - backend
+
+  redis:
+    image: redis:5.0.5-alpine
+    container_name: "eadapi-redis"
+    ports:
+      - "6379:6379"
     networks:
       - backend
 

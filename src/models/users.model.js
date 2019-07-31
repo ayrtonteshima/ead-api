@@ -6,14 +6,14 @@ const { Schema } = mongoose;
 const UserSchema = new Schema({
   _id: {
     type: String,
-    default: uuidv4()
+    default: uuidv4(),
   },
   name: String,
   dateOfBirth: Date,
   docType: String,
   docNumber: String,
   email: String,
-  status: Number,
+  status: Boolean,
   password: String,
   address: {
     street: String,
@@ -23,9 +23,9 @@ const UserSchema = new Schema({
     city: String,
     zipcode: String,
     number: String,
-  }
+  },
 }, {
-  timestamps: {}
+  timestamps: {},
 });
 
 module.exports = new mongoose.model('User', UserSchema);

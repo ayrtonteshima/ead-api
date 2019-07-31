@@ -17,5 +17,5 @@ module.exports = {
     number: Joi.string(),
     complement: Joi.string(),
   },
-  timestamps: Joi.any().forbidden()
+  timestamps: Joi.any().forbidden(),
 };
