@@ -5,6 +5,11 @@ module.exports = [
   {
     method: 'POST',
     path: '/users',
-    handler: userHandler.create
+    handler: userHandler.create,
+    options: {
+      validate: {
+        payload: userSchema
+      }
+    }
   }
 ];
