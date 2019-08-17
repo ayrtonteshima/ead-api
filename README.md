@@ -3,7 +3,7 @@
 API RESTFul da plataforma de ensino a distância. Projeto em Node/JS seguindo boas práticas e de fácil integração.
 
 ## Dependências
-* Node 10.5.1
+* Node 10.5.3
 * NPM
 * Docker
 * Docker Compose
