@@ -41,6 +41,7 @@ docker logs -f eadapi-api
 
 ## Tecnologias
 * Node
+* HapiJS Framework
 * MongoDB
 * Redis
 * MySQL
