@@ -8,12 +8,18 @@ API RESTFul da plataforma de ensino a distância. Projeto em Node/JS seguindo bo
 * Docker
 * Docker Compose
 
-## Rodando local
+## Configurando e rodando local
+Renomeie o arquivo `.env.example` para `.env`, gere uma SECRET_KEY e adicione o valor a variável `SECRET_KEY` no arquivo.
+Para rodar local, você pode por qualquer valor no SECRET_KEY ou gerar uma de forma mais segura com o comando:
+```
+node -e "console.log(require('crypto').randomBytes(256).toString('base64'));"
+```
+### Rode os containers
 ```
 docker-compose up -d
 ```
 
-### Mongo
+### Configure o MongoDB
 Para rodar o projeto local, é necessário criar o usuário do banco de dados `eadapi` que utilizamos no sistema.
 Acesse o container docker do mongo pelo terminal:
 ```
