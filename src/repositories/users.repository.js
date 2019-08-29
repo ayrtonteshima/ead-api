@@ -1,15 +1,21 @@
 const UserModel = require('../models/users.model');
 const Cache = require('./cache.repository');
 const { ERR_DUPLICATE_EMAIL } = require('../utils/errorTypes');
+const { ERR_DUPLICATE_DOCNUMBER } = require('../utils/errorTypes');
 const { LOGIN_EXPIRATION_TIME } = require('../auth/confs');
 
 const PREFIX_CACHE = 'userId:';
 
 const create = async (userData) => {
-  const userExists = await UserModel.exists({ email: userData.email });
+  const emailExists = await UserModel.exists({ email: userData.email });
+  const docNumberExists = await UserModel.exists({ docNumber: userData.docNumber });
 
-  if (userExists) {
+  if (emailExists) {
     throw new Error(ERR_DUPLICATE_EMAIL);
+  }
+
+  else if (docNumberExists) {
+    throw new Error(ERR_DUPLICATE_DOCNUMBER);
   }
 
   const userModel = new UserModel(userData);
