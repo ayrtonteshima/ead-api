@@ -3,7 +3,8 @@ const Cache = require('../repositories/cache.repository');
 const { findByEmail } = require('../repositories/users.repository');
 const { LOGIN_EXPIRATION_TIME, BLACKLIST_CACHE_PREFIX } = require('./confs');
 
-const hash = require('./hash.auth');
+const hash = require('../utils/hash');
+
 const {
   ERR_USER_NOT_FOUND,
   ERR_INVALID_PASSWORD,

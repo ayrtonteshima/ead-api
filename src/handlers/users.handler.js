@@ -1,6 +1,6 @@
 const boom = require('boom');
 const userRepository = require('../repositories/users.repository');
-const hash = require('../auth/hash.auth');
+const hash = require('../utils/hash');
 const { ERR_DUPLICATE_EMAIL } = require('../utils/errorTypes');
 
 const create = async (req, h) => {
