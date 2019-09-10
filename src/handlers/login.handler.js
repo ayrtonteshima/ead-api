@@ -20,11 +20,11 @@ const login = async (req, h) => {
   } catch (e) {
     switch (e.message) {
       case ERR_INVALID_PASSWORD:
-        throw boom.badData('E-mail ou senha inválido');
+        throw boom.notFound('E-mail ou senha inválido');
       case ERR_INVALID_TOKEN:
         throw boom.badImplementation('Erro ao gerar token');
       case ERR_USER_NOT_FOUND:
-        throw boom.notFound('Usuário não encontrado');
+        throw boom.notFound('E-mail ou senha inválido');
       default:
         throw boom.badImplementation(e);
     }
