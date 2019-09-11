@@ -22,8 +22,7 @@ const create = async (req, h) => {
   }
 };
 
-const getAll = async (req) => {
-  console.log(req.headers);
+const getAll = async () => {
   return [];
 };
 
