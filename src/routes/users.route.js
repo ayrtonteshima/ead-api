@@ -11,5 +11,12 @@ module.exports = [
         payload: userSchema
       }
     }
+  },
+  {
+    method: 'GET',
+    path: '/users',
+    handler: (req, h) => {
+      return []
+    }
   }
 ];
