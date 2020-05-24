@@ -13,8 +13,15 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     networks:
       - backend
+  redis:
+    image: redis:5.0.5-alpine
+    container_name: "eadapi-redis"
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
   api:
-    image: node:10.16-slim
+    image: node:12.16.3-stretch-slim
     container_name: "eadapi-api"
     ports:
       - "3000:3000"
@@ -24,14 +31,9 @@ services:
     command: "npm start"
     networks:
       - backend
-
-  redis:
-    image: redis:5.0.5-alpine
-    container_name: "eadapi-redis"
-    ports:
-      - "6379:6379"
-    networks:
-      - backend
+    depends_on:
+      - "mongo"
+      - "redis"
 
 networks:
   backend:

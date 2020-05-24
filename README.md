@@ -45,6 +45,14 @@ Para visualizar os logs, é necessário rodar o comando do docker para visualiza
 docker logs -f eadapi-api
 ```
 
+Se ocorrer algum erro na API relacionado a conexão com o MongoDB na primeira vez que executar o projeto, reinicie o container do `eadapi-api` através do comando:
+
+```
+docker restart eadapi-api
+```
+
+Acesse novamente o log e observe se a conexão entre o Node e o Mongo foi realizada com sucesso.
+
 ## Tecnologias
 * Node
 * HapiJS Framework
