@@ -26,7 +26,7 @@ services:
       - backend
 
   redis:
-    image: redis:5.0.5-alpine
+    image: redis:6.0-alpine
     container_name: "eadapi-redis"
     ports:
       - "6379:6379"
