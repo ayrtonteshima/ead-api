@@ -21,7 +21,12 @@ services:
     working_dir: "/home/node/app"
     volumes:
       - ./:/home/node/app
-    command: "npm start"
+    command:
+      - sh
+      - -c
+      - |
+        npm install
+        npm start
     networks:
       - backend
 
