@@ -10,6 +10,7 @@ const uri = `mongodb://${USER}:${PASSWORD}@${HOST}:${PORT}/${DATABASE}`;
 
 const options = {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
 };
 
 try {

@@ -26,23 +26,23 @@
   },
   "homepage": "https://github.com/programadorabordo/ead-api#readme",
   "devDependencies": {
-    "ava": "^2.3.0",
-    "dotenv-safe": "^6.1.0",
-    "eslint": "^5.3.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.17.3",
-    "nodemon": "^1.19.0",
-    "sinon": "^7.4.2"
+    "ava": "^3.8.2",
+    "eslint": "^7.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "nodemon": "^2.0.4",
+    "sinon": "^9.0.2"
   },
   "dependencies": {
-    "@hapi/hapi": "^18.3.1",
-    "@hapi/joi": "^15.1.0",
+    "@hapi/boom": "^9.1.0",
+    "@hapi/hapi": "^19.1.1",
+    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
-    "boom": "^7.3.0",
-    "hapi-auth-jwt2": "^8.6.1",
-    "ioredis": "^4.14.0",
+    "dotenv-safe": "^8.2.0",
+    "hapi-auth-jwt2": "^10.1.0",
+    "ioredis": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.6.7",
-    "uuid": "^3.3.2"
+    "mongoose": "^5.9.16",
+    "uuid": "^8.1.0"
   }
 }

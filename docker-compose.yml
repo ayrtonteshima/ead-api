@@ -14,7 +14,7 @@ services:
     networks:
       - backend
   api:
-    image: node:10.16-slim
+    image: node:14.3-slim
     container_name: "eadapi-api"
     ports:
       - "3000:3000"

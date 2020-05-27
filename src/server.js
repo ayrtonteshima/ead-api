@@ -1,10 +1,10 @@
 const Hapi = require('@hapi/hapi');
-const routes = require('./routes');
 const hapiAuthJwt2 = require('hapi-auth-jwt2');
+const routes = require('./routes');
 const jwtStrategy = require('./auth/strategies/JWT');
 
-const PORT = process.env.PORT;
-const HOST = process.env.HOST;
+const { PORT } = process.env;
+const { HOST } = process.env;
 
 const server = Hapi.server({
   port: PORT,
@@ -40,4 +40,3 @@ module.exports = {
   start,
   init,
 };
-
