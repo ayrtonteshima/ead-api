@@ -1,4 +1,4 @@
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const auth = require('../auth/authenticate.auth');
 const userRepository = require('../repositories/users.repository');
 

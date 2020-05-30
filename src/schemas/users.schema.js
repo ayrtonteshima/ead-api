@@ -1,6 +1,6 @@
 const Joi = require('@hapi/joi');
 
-module.exports = {
+module.exports = Joi.object({
   name: Joi.string().min(3).required(),
   dateOfBirth: Joi.date().iso(),
   docType: Joi.string(),
@@ -18,4 +18,4 @@ module.exports = {
     complement: Joi.string(),
   },
   timestamps: Joi.any().forbidden(),
-};
+});
