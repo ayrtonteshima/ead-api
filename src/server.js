@@ -3,8 +3,7 @@ const hapiAuthJwt2 = require('hapi-auth-jwt2');
 const routes = require('./routes');
 const jwtStrategy = require('./auth/strategies/JWT');
 
-const { PORT } = process.env;
-const { HOST } = process.env;
+const { PORT, HOST } = process.env;
 
 const server = Hapi.server({
   port: PORT,
