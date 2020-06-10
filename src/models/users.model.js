@@ -1,7 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 const { v4: uuidv4 } = require('uuid');
 
-const { Schema } = mongoose;
 
 const UserSchema = new Schema({
   _id: {
@@ -28,4 +27,4 @@ const UserSchema = new Schema({
   timestamps: {},
 });
 
-module.exports = new mongoose.model('User', UserSchema);
+module.exports = model('User', UserSchema);
