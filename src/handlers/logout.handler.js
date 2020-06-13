@@ -1,8 +1,8 @@
-const boom = require('@hapi/boom');
-const auth = require('../auth/authenticate.auth');
-const userRepository = require('../repositories/users.repository');
+import boom from '@hapi/boom';
+import auth from '../auth/authenticate.auth';
+import userRepository from '../repositories/users.repository';
 
-const logout = async (req, h) => {
+export const logout = async (req, h) => {
   const { credentials, token } = req.auth;
   try {
     await Promise.all([
@@ -17,6 +17,4 @@ const logout = async (req, h) => {
   }
 };
 
-module.exports = {
-  logout,
-};
+export default logout;

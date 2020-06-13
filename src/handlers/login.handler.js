@@ -1,12 +1,7 @@
-const boom = require('@hapi/boom');
-const authenticate = require('../auth/authenticate.auth');
-const userRepository = require('../repositories/users.repository');
-
-const {
-  ERR_INVALID_PASSWORD,
-  ERR_INVALID_TOKEN,
-  ERR_USER_NOT_FOUND,
-} = require('../utils/errorTypes');
+import { notFound, badImplementation } from '@hapi/boom';
+import authenticate from '../auth/authenticate.auth';
+import userRepository from '../repositories/users.repository';
+import { ERR_INVALID_PASSWORD, ERR_INVALID_TOKEN, ERR_USER_NOT_FOUND } from '../utils/errorTypes';
 
 const login = async (req, h) => {
   const { email, password } = req.payload;
@@ -20,17 +15,15 @@ const login = async (req, h) => {
   } catch (e) {
     switch (e.message) {
       case ERR_INVALID_PASSWORD:
-        throw boom.notFound('E-mail ou senha inválido');
+        throw notFound('E-mail ou senha inválido');
       case ERR_INVALID_TOKEN:
-        throw boom.badImplementation('Erro ao gerar token');
+        throw badImplementation('Erro ao gerar token');
       case ERR_USER_NOT_FOUND:
-        throw boom.notFound('E-mail ou senha inválido');
+        throw notFound('E-mail ou senha inválido');
       default:
-        throw boom.badImplementation(e);
+        throw badImplementation(e);
     }
   }
 };
 
-module.exports = {
-  login,
-};
+export default login;

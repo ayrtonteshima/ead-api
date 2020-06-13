@@ -1,12 +1,12 @@
-const boom = require('@hapi/boom');
-const userRepository = require('../repositories/users.repository');
-const hash = require('../utils/hash');
-const { ERR_DUPLICATE_EMAIL } = require('../utils/errorTypes');
+import { badData, badImplementation } from '@hapi/boom';
+import userRepository from '../repositories/users.repository';
+import { make } from '../utils/hash';
+import { ERR_DUPLICATE_EMAIL } from '../utils/errorTypes';
 
 const create = async (req, h) => {
   try {
     const userData = req.payload;
-    const passwordHashed = await hash.make(userData.password);
+    const passwordHashed = await make(userData.password);
 
     userData.password = passwordHashed;
 
@@ -15,16 +15,16 @@ const create = async (req, h) => {
   } catch (e) {
     switch (e.message) {
       case ERR_DUPLICATE_EMAIL:
-        throw boom.badData('E-mail duplicado');
+        throw badData('E-mail duplicado');
       default:
-        throw boom.badImplementation(e);
+        throw badImplementation(e);
     }
   }
 };
 
-const getAll = async () => [];
+const getAll = async () => userRepository.findAll();
 
-module.exports = {
+export default {
   create,
   getAll,
 };

@@ -1,7 +1,7 @@
-const Hapi = require('@hapi/hapi');
-const hapiAuthJwt2 = require('hapi-auth-jwt2');
-const routes = require('./routes');
-const jwtStrategy = require('./auth/strategies/JWT');
+import Hapi from '@hapi/hapi';
+import hapiAuthJwt2 from 'hapi-auth-jwt2';
+import routes from './routes';
+import jwtStrategy from './auth/strategies/JWT';
 
 const { PORT } = process.env;
 const { HOST } = process.env;
@@ -22,21 +22,18 @@ const initializePlugins = async () => {
   server.auth.default(jwtStrategy.name);
 };
 
-const start = async () => {
+export const start = async () => {
   await initializePlugins();
   await server.start();
 
   return server;
 };
 
-const init = async () => {
+export const init = async () => {
   await initializePlugins();
   await server.initialize();
 
   return server;
 };
 
-module.exports = {
-  start,
-  init,
-};
+export default { init, start };

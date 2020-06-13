@@ -1,15 +1,11 @@
-const Redis = require('../services/redis.service').get();
+import Redis from '../services/redis.service';
 
-const set = (key, value, seconds) => (
-  Redis.set(key, value, 'EX', seconds)
+const RedisClient = Redis.get();
+
+export const set = (key, value, seconds) => (
+  RedisClient.set(key, value, 'EX', seconds)
 );
 
-const exists = key => Redis.exists(key);
+export const exists = (key) => RedisClient.exists(key);
 
-const del = key => Redis.del(key);
-
-module.exports = {
-  set,
-  exists,
-  del,
-};
+export const del = (key) => RedisClient.del(key);

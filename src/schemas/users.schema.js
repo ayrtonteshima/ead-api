@@ -1,6 +1,6 @@
-const Joi = require('@hapi/joi');
+import Joi from '@hapi/joi';
 
-module.exports = Joi.object({
+export default Joi.object({
   name: Joi.string().min(3).required(),
   dateOfBirth: Joi.date().iso(),
   docType: Joi.string(),

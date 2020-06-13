@@ -1,23 +1,18 @@
-const Token = require('./token.auth');
-const Cache = require('../repositories/cache.repository');
-const { findByEmail } = require('../repositories/users.repository');
-const { LOGIN_EXPIRATION_TIME, BLACKLIST_CACHE_PREFIX } = require('./confs');
-
-const hash = require('../utils/hash');
-
-const {
-  ERR_USER_NOT_FOUND,
-  ERR_INVALID_PASSWORD,
-} = require('../utils/errorTypes');
+import generate from './token.auth';
+import { set } from '../repositories/cache.repository';
+import userRepository from '../repositories/users.repository';
+import { LOGIN_EXPIRATION_TIME, BLACKLIST_CACHE_PREFIX } from './confs';
+import { compare } from '../utils/hash';
+import { ERR_USER_NOT_FOUND, ERR_INVALID_PASSWORD } from '../utils/errorTypes';
 
 const login = async (email, password) => {
-  const user = await findByEmail(email);
+  const user = await userRepository.findByEmail(email);
 
   if (!user) {
     throw new Error(ERR_USER_NOT_FOUND);
   }
 
-  const passwordOk = await hash.compare(password, user.password);
+  const passwordOk = await compare(password, user.password);
 
   if (!passwordOk) {
     throw new Error(ERR_INVALID_PASSWORD);
@@ -32,16 +27,16 @@ const login = async (email, password) => {
     },
   };
 
-  const token = await Token.generate(JWTData);
+  const token = generate(JWTData);
 
   return { user, token };
 };
 
-const logout = token => (
-  Cache.set(`${BLACKLIST_CACHE_PREFIX}${token}`, 1, LOGIN_EXPIRATION_TIME)
+const logout = (token) => (
+  set(`${BLACKLIST_CACHE_PREFIX}${token}`, 1, LOGIN_EXPIRATION_TIME)
 );
 
-module.exports = {
+export default {
   login,
   logout,
 };
