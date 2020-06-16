@@ -1,34 +1,45 @@
 import test from 'ava';
 import sinon from 'sinon';
 import Redis from '../../../src/services/redis.service';
-import { init } from '../../../src/server';
+import Server from '../../../src/server';
+import userRepository from '../../../src/repositories/users.repository';
 
 let server;
 
 sinon.stub(Redis, 'get').returns({});
+sinon.stub(userRepository, 'findByEmail').returns({});
+
+const auth = {
+  strategy: 'jwt',
+  credentials: 'Bearer abc',
+};
 
 test.before(async () => {
-  server = await init();
+  server = await Server.init();
 });
 
+test.after(async () => {
+  await server.stop();
+});
 
 const requestDefaults = {
   method: 'POST',
   url: '/login',
+  auth,
   payload: {},
 };
 
-test('endpoint test | POST /login | Invalid password -> 404 Not Found', async (t) => {
+test('endpoint test | POST /login | Invalid user -> 404 Not Found', async (t) => {
   const request = {
     ...requestDefaults,
     payload: {
-      email: 'caracara@plancus.com',
+      email: 'test@tester.com',
       password: '111111111111111',
     },
   };
 
-  const response = await server.inject(request);
-  t.is(response.statusCode, 400, 'status code is 400');
+  const { result } = await server.inject(request);
+  t.is(result.statusCode, 404, 'E-mail ou senha inválido');
 });
 
 test('endpoint test | POST /login | Invalid request payload input -> 400 Bad Request', async (t) => {
@@ -36,22 +47,10 @@ test('endpoint test | POST /login | Invalid request payload input -> 400 Bad Req
     ...requestDefaults,
     payload: {
       email: 'a',
+      password: 'a',
     },
   };
 
-  const response = await server.inject(request);
-  t.is(response.statusCode, 400, 'status code is 400');
-});
-
-test('endpoint test | POST /login | Valid login -> 200 Ok', async (t) => {
-  const request = {
-    ...requestDefaults,
-    payload: {
-      email: 'caracara@plancus.com',
-      password: '1234567323',
-    },
-  };
-
-  const response = await server.inject(request);
-  t.is(response.statusCode, 200, 'status code is 200');
+  const { result } = await server.inject(request);
+  t.is(result.statusCode, 400, 'Bad Request');
 });

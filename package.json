@@ -4,7 +4,7 @@
   "description": "API da plataforma de ensino a distância",
   "main": "index.js",
   "scripts": {
-    "test": "ava -f tests/**/*.test.js",
+    "test": "ava -f --verbose tests/**/*.test.js",
     "start": "nodemon src/index",
     "eslint": "eslint ./src/**/*.js",
     "build": "sucrase ./src -d ./dist --transforms imports",

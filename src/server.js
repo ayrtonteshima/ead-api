@@ -2,6 +2,7 @@ import Hapi from '@hapi/hapi';
 import hapiAuthJwt2 from 'hapi-auth-jwt2';
 import routes from './routes';
 import jwtStrategy from './auth/strategies/JWT';
+import isEmpty from './utils/object.helper';
 
 const { PORT } = process.env;
 const { HOST } = process.env;
@@ -15,21 +16,23 @@ const server = Hapi.server({
 server.route(routes);
 
 const initializePlugins = async () => {
-  await server.register(hapiAuthJwt2);
+  if (isEmpty(server.registrations)) {
+    await server.register(hapiAuthJwt2);
 
-  // Definindo estratégia de autenticação
-  server.auth.strategy(jwtStrategy.name, jwtStrategy.schema, jwtStrategy.options);
-  server.auth.default(jwtStrategy.name);
+    // Definindo estratégia de autenticação
+    server.auth.strategy(jwtStrategy.name, jwtStrategy.schema, jwtStrategy.options);
+    server.auth.default(jwtStrategy.name);
+  }
 };
 
-export const start = async () => {
+const start = async () => {
   await initializePlugins();
   await server.start();
 
   return server;
 };
 
-export const init = async () => {
+const init = async () => {
   await initializePlugins();
   await server.initialize();
 

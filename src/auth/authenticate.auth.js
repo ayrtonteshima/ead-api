@@ -4,17 +4,18 @@ import userRepository from '../repositories/users.repository';
 import { LOGIN_EXPIRATION_TIME, BLACKLIST_CACHE_PREFIX } from './confs';
 import { compare } from '../utils/hash';
 import { ERR_USER_NOT_FOUND, ERR_INVALID_PASSWORD } from '../utils/errorTypes';
+import isEmpty from '../utils/object.helper';
 
 const login = async (email, password) => {
   const user = await userRepository.findByEmail(email);
 
-  if (!user) {
+  if (isEmpty(user)) {
     throw new Error(ERR_USER_NOT_FOUND);
   }
 
   const passwordOk = await compare(password, user.password);
 
-  if (!passwordOk) {
+  if (isEmpty(passwordOk)) {
     throw new Error(ERR_INVALID_PASSWORD);
   }
 

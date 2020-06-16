@@ -1,15 +1,16 @@
+/* eslint-disable no-console */
 import dotenv from 'dotenv-safe';
-import MongoClient from './services/mongo.service';
+import Mongo from './services/mongo.service';
 import RedisClient from './services/redis.service';
-import { start } from './server';
+import Server from './server';
 
 const init = async () => {
   // Inicializando servidor
   dotenv.config();
+  Mongo.get();
   RedisClient.get();
-  MongoClient.get();
-  const server = await start();
-  console.log('Server running on %ss', server.info.uri);
+  const server = (await Server.start()).info.uri;
+  console.log('Server running on %ss', server);
 };
 
 process.on('unhandledRejection', (err) => {

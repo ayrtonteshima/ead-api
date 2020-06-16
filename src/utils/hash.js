@@ -7,3 +7,5 @@ export const make = async (value) => (
 export const compare = (value, valueHash) => (
   bcrypt.compare(value, valueHash)
 );
+
+export default { make, compare };
