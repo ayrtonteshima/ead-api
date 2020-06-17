@@ -1,7 +1,7 @@
-const userRoutes = require('./users.route');
-const authRoutes = require('./auth.route');
+import userRoutes from './users.route';
+import authRoutes from './auth.route';
 
-module.exports = [
+export default [
   ...userRoutes,
   ...authRoutes,
 ];

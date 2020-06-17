@@ -1,3 +1,3 @@
-exports.LOGIN_EXPIRATION_TIME = 3600; // 1h
-exports.BLACKLIST_CACHE_PREFIX = 'backlistUserToken:';
-exports.ALGORITHM = 'HS256';
+export const LOGIN_EXPIRATION_TIME = 3600; // 1h
+export const BLACKLIST_CACHE_PREFIX = 'backlistUserToken:';
+export const ALGORITHM = 'HS256';

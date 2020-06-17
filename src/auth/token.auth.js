@@ -1,9 +1,9 @@
-const JWT = require('jsonwebtoken');
+import JWT from 'jsonwebtoken';
 
-const { ERR_INVALID_TOKEN } = require('../utils/errorTypes');
-const { ALGORITHM } = require('./confs');
+import { ERR_INVALID_TOKEN } from '../utils/errorTypes';
+import { ALGORITHM } from './confs';
 
-const generate = data => (
+const generate = (data) => (
   new Promise((resolve) => {
     JWT.sign(data, process.env.SECRET_KEY, { algorithm: ALGORITHM }, (err, token) => {
       if (err) {
@@ -16,6 +16,4 @@ const generate = data => (
   })
 );
 
-module.exports = {
-  generate,
-};
+export default { generate };

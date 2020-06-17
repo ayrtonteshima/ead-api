@@ -1,18 +1,25 @@
-const Redis = require('ioredis');
+import Redis from 'ioredis';
 
 let redis = null;
 
-exports.connect = () => {
+export const connect = () => {
   redis = new Redis({
     port: process.env.REDIS_PORT,
     host: process.env.REDIS_HOST,
-  })
+  });
 };
 
-exports.get = () => {
+export const get = () => {
   if (!redis) {
     throw new Error('REDIS_NOT_INITIALIZED');
   }
 
   return redis;
+};
+
+connect();
+
+export default {
+  connect,
+  get,
 };

@@ -1,8 +1,11 @@
 {
   "name": "ead-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "API da plataforma de ensino a distância",
   "main": "index.js",
+  "ava": {
+    "require": "esm"
+  },
   "scripts": {
     "test": "ava -f tests/**/*.test.js",
     "start": "nodemon src/index",
@@ -31,7 +34,9 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
     "nodemon": "^2.0.4",
-    "sinon": "^9.0.2"
+    "sinon": "^9.0.2",
+    "sucrase": "^3.15.0",
+    "esm": "^3.2.25"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.0",
