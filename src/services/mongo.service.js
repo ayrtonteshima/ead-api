@@ -1,4 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv-safe';
+
+dotenv.config();
 
 const HOST = process.env.MONGO_HOST;
 const PORT = process.env.MONGO_PORT;
@@ -13,12 +16,13 @@ const options = {
   useUnifiedTopology: true,
 };
 
-try {
-  mongoose.connect(uri, options);
-} catch (error) {
-  console.error(error);
-}
+const get = async () => {
+  try {
+    mongoose.connect(uri, options);
+    mongoose.connection.on('error', (err) => { throw new Error(err); });
+  } catch (error) {
+    console.error(error);
+  }
+};
 
-mongoose.connection.on('error', (err) => {
-  console.error(err);
-});
+export default { get };

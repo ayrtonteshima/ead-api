@@ -1,12 +1,12 @@
-const boom = require('@hapi/boom');
-const authenticate = require('../auth/authenticate.auth');
-const userRepository = require('../repositories/users.repository');
+import boom from '@hapi/boom';
+import authenticate from '../auth/authenticate.auth';
+import userRepository from '../repositories/users.repository';
 
-const {
+import {
   ERR_INVALID_PASSWORD,
   ERR_INVALID_TOKEN,
   ERR_USER_NOT_FOUND,
-} = require('../utils/errorTypes');
+} from '../utils/errorTypes';
 
 const login = async (req, h) => {
   const { email, password } = req.payload;
@@ -31,6 +31,6 @@ const login = async (req, h) => {
   }
 };
 
-module.exports = {
+export default {
   login,
 };

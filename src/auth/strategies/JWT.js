@@ -1,5 +1,5 @@
-const Cache = require('../../repositories/cache.repository');
-const { BLACKLIST_CACHE_PREFIX, ALGORITHM } = require('../confs')
+import Cache from '../../repositories/cache.repository';
+import { BLACKLIST_CACHE_PREFIX, ALGORITHM } from '../confs';
 
 const name = 'jwt';
 
@@ -14,7 +14,7 @@ const options = {
   verifyOptions: { algorithms: [ALGORITHM] },
 };
 
-module.exports = {
+export default {
   name,
   schema,
   options,

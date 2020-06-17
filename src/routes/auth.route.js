@@ -1,8 +1,8 @@
-const loginHandler = require('../handlers/login.handler');
-const logoutHandler = require('../handlers/logout.handler');
-const loginSchema = require('../schemas/login.schema');
+import loginHandler from '../handlers/login.handler';
+import logoutHandler from '../handlers/logout.handler';
+import loginSchema from '../schemas/login.schema';
 
-module.exports = [
+export default [
   {
     method: 'POST',
     path: '/login',

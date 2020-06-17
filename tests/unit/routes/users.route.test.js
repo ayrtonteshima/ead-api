@@ -1,6 +1,6 @@
-const test = require('ava');
-const sinon = require('sinon');
-const Redis = require('../../../src/services/redis.service');
+import test from 'ava';
+import sinon from 'sinon';
+import Redis from '../../../src/services/redis.service';
 
 sinon.stub(Redis, 'get').returns({});
 
@@ -8,12 +8,12 @@ const { init } = require('../../../src/server');
 
 const auth = {
   strategy: 'jwt',
-  credentials: 'Bearer abc'
+  credentials: 'Bearer abc',
 };
 
 let server;
 
-test.before(async t => {
+test.before(async (t) => {
   server = await init();
 });
 
@@ -24,4 +24,4 @@ test('should return empty array', async (t) => {
     auth,
   });
   t.is(res.payload, '[]');
-})
+});

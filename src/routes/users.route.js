@@ -1,7 +1,7 @@
-const userHandler = require('../handlers/users.handler');
-const userSchema = require('../schemas/users.schema.js');
+import userHandler from '../handlers/users.handler';
+import userSchema from '../schemas/users.schema';
 
-module.exports = [
+export default [
   {
     method: 'POST',
     path: '/users',

@@ -1,14 +1,14 @@
-const Token = require('./token.auth');
-const Cache = require('../repositories/cache.repository');
-const { findByEmail } = require('../repositories/users.repository');
-const { LOGIN_EXPIRATION_TIME, BLACKLIST_CACHE_PREFIX } = require('./confs');
+import Token from './token.auth';
+import Cache from '../repositories/cache.repository';
+import { findByEmail } from '../repositories/users.repository';
+import { LOGIN_EXPIRATION_TIME, BLACKLIST_CACHE_PREFIX } from './confs';
 
-const hash = require('../utils/hash');
+import hash from '../utils/hash';
 
-const {
+import {
   ERR_USER_NOT_FOUND,
   ERR_INVALID_PASSWORD,
-} = require('../utils/errorTypes');
+} from '../utils/errorTypes';
 
 const login = async (email, password) => {
   const user = await findByEmail(email);
@@ -37,11 +37,11 @@ const login = async (email, password) => {
   return { user, token };
 };
 
-const logout = token => (
+const logout = (token) => (
   Cache.set(`${BLACKLIST_CACHE_PREFIX}${token}`, 1, LOGIN_EXPIRATION_TIME)
 );
 
-module.exports = {
+export default {
   login,
   logout,
 };
