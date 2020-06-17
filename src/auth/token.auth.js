@@ -3,17 +3,15 @@ import JWT from 'jsonwebtoken';
 import { ERR_INVALID_TOKEN } from '../utils/errorTypes';
 import { ALGORITHM } from './confs';
 
-const generate = (data) => (
-  new Promise((resolve) => {
-    JWT.sign(data, process.env.SECRET_KEY, { algorithm: ALGORITHM }, (err, token) => {
-      if (err) {
-        console.error(err);
-        throw new Error(ERR_INVALID_TOKEN);
-      }
+const { SECRET_KEY } = process.env;
 
-      resolve(token);
-    });
-  })
-);
+const generate = (data) => {
+  try {
+    return JWT.sign(data, SECRET_KEY, { algorithm: ALGORITHM });
+  } catch (error) {
+    console.error(error.message);
+    throw new Error(ERR_INVALID_TOKEN);
+  }
+};
 
 export default { generate };
