@@ -1,8 +1,8 @@
 const Cache = require('../../repositories/cache.repository');
 const { BLACKLIST_CACHE_PREFIX, ALGORITHM } = require('../confs')
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 const name = 'jwt';
-
 const schema = 'jwt';
 
 const options = {
@@ -14,6 +14,7 @@ const options = {
   verifyOptions: { algorithms: [ALGORITHM] },
 };
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 module.exports = {
   name,
   schema,
